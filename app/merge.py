@@ -25,7 +25,5 @@ if __name__ == "__main__":
     parser = read_files()
     a = parser.parse_args()
     b = vars(parser.parse_args())
-    # print(arguments.File1)
-    # print(arguments.File2)
     print(a)
     print(b)

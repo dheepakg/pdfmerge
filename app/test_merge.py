@@ -1,9 +1,10 @@
 import sys
-from sys import stderr
+# from sys import stderr
 
 import pytest
-from importlib_metadata import version
-from pyparsing import __version__
+# from importlib_metadata import version
+
+# from pyparsing import __version__
 
 import merge
 from _version import __version__
@@ -25,10 +26,10 @@ def check_version():
 def test_version_check(capsys):
     result = check_version()
     out, err = capsys.readouterr()
-    print("Output is ", out)
-    print("Error is ", err)
+    # print("Output is ", out)
+    # print("Error is ", err)
     ver_list = out.split(" ")
-    print(ver_list[-1])
+    # print(ver_list[-1])
     assert ver_list[-1] == __version__ + "\n"
 
 
