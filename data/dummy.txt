@@ -1,0 +1,6 @@
+python app/__main__.py /Users/deegee/Desktop/WorkArea/GitHub/pdfmerge/data/File_One.pdf /Users/deegee/Desktop/WorkArea/GitHub/pdfmerge/data/File_Two.pdf
+
+
+
+pytest --cov-report term-missing --cov=app app/ -s
+
