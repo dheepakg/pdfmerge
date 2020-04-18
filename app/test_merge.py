@@ -4,6 +4,8 @@ import sys
 from operator import contains
 from optparse import Values
 from os.path import split
+from pathlib import Path
+
 
 import pytest
 
@@ -67,7 +69,7 @@ def test_read_1_variables(capsys):
 
 obj4 = pdfMerge()
 parser = obj4.read_files()
-two_pdf_files = vars(
+two_valid_pdf_files = vars(
     parser.parse_args(
         [
             "/Users/deegee/Desktop/WorkArea/GitHub/pdfmerge/data/File_One.pdf",
@@ -77,7 +79,7 @@ two_pdf_files = vars(
 )
 
 
-two_non_pdf_files = vars(
+two_invalid_pdf_files = vars(
     parser.parse_args(
         [
             "/Users/deegee/Desktop/WorkArea/GitHub/pdfmerge/data/File_One.txt",
@@ -101,18 +103,35 @@ def check_pdf(two_files_dict):
 
 
 def test_2_pdfs():
-    test_pdf, method_pdf = check_pdf(two_pdf_files)
+    test_pdf, method_pdf = check_pdf(two_valid_pdf_files)
     assert test_pdf == method_pdf
 
 
 def test_2_non_pdfs():
-    test_pdf, method_pdf = check_pdf(two_non_pdf_files)
+    test_pdf, method_pdf = check_pdf(two_invalid_pdf_files)
     assert test_pdf == method_pdf
 
 
-# def test_pdf_file_exists_in_file_system():
+def check_pdf_files_exists(two_files_dict):
 
-#     assert True
+    file_exist_or_not_output = obj4.file_exist_or_not(two_files_dict)
+    test_file_exist_flag = True
+    for element in two_files_dict.values():
+        given_file = Path(element)
+        if not given_file.is_file():
+            test_file_exist_flag = False
+            break
+    return (test_file_exist_flag, file_exist_or_not_output)
+
+
+def test_pdf_file_exists_in_file_system():
+    test_file, method_file = check_pdf_files_exists(two_valid_pdf_files)
+    assert test_file == method_file
+
+
+def test_pdf_file_not_exists_in_file_system():
+    test_file, method_file = check_pdf_files_exists(two_invalid_pdf_files)
+    assert test_file == method_file
 
 
 if __name__ == "__main__":

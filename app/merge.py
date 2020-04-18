@@ -1,5 +1,6 @@
 import argparse
 from _version import __version__
+from pathlib import Path
 
 
 class pdfMerge:
@@ -21,10 +22,10 @@ class pdfMerge:
 
         return input_args
 
-    def check_pdf_or_not(self, files):
-        print("files ", files.values())
+    def check_pdf_or_not(self, files_dict):
+        print("files ", files_dict.values())
         pdf_flag = True
-        for element in files.values():
+        for element in files_dict.values():
             file_name = element.split("//")[-1]
             file_ext = file_name.split(".")[-1]
             if file_ext.upper() != "PDF":
@@ -32,4 +33,13 @@ class pdfMerge:
                 break
         return pdf_flag
 
-        # return file_validation_dict
+    def file_exist_or_not(self, files_dict):
+        print("files ", files_dict)
+        file_exist = True
+        for element in files_dict.values():
+            given_file = Path(element)
+            if not given_file.is_file():
+                file_exist = False
+                break
+
+        return file_exist
