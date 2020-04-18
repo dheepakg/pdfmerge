@@ -7,3 +7,6 @@ if __name__ == "__main__":
         file_dict = vars(parser.parse_args())
         if obj.check_pdf_or_not(file_dict):
             print("Valid PDF files")
+            if obj.file_exist_or_not(file_dict):
+                print("**********valid files**********")
+                print(">>Proceed to PDF operation<<")
