@@ -8,6 +8,8 @@
 
 [![Build Status](https://travis-ci.org/dheepakg/pdfmerge.svg?branch=master)](https://travis-ci.org/dheepakg/pdfmerge)
 
+[![codecov](https://codecov.io/gh/dheepakg/pdfmerge/branch/master/graph/badge.svg)](https://codecov.io/gh/dheepakg/pdfmerge)
+
 # PDF Merger
 
 This is project is intended to merge PDFs cli. This is more of a practise area, with final output is expected to be an executable across Windows & non-Windows machine.
