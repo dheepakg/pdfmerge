@@ -92,24 +92,17 @@ two_invalid_pdf_files = vars(
 def check_pdf(two_files_dict):
 
     check_pdf_or_not_output = obj4.check_pdf_or_not(two_files_dict)
-    test_pdf_flag = True
-    for element in two_files_dict.values():
-        file_name = element.split("//")[-1]
-        file_ext = file_name.split(".")[-1]
-        if file_ext.upper() != "PDF":
-            test_pdf_flag = False
-            break
-    return (test_pdf_flag, check_pdf_or_not_output)
+    return check_pdf_or_not_output
 
 
 def test_2_pdfs():
-    test_pdf, method_pdf = check_pdf(two_valid_pdf_files)
-    assert test_pdf == method_pdf
+    method_pdf = check_pdf(two_valid_pdf_files)
+    assert method_pdf == True
 
 
 def test_2_non_pdfs():
-    test_pdf, method_pdf = check_pdf(two_invalid_pdf_files)
-    assert test_pdf == method_pdf
+    method_pdf = check_pdf(two_invalid_pdf_files)
+    assert method_pdf == False
 
 
 def check_pdf_files_exists(two_files_dict):
@@ -132,8 +125,6 @@ def test_pdf_file_exists_in_file_system():
 def test_pdf_file_not_exists_in_file_system():
     test_file, method_file = check_pdf_files_exists(two_invalid_pdf_files)
     assert test_file == method_file
-
-
 
 
 if __name__ == "__main__":
