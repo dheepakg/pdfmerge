@@ -6,6 +6,8 @@
 
 [![HitCount](http://hits.dwyl.com/dheepakg/pdfMerge/Project1.svg)](http://hits.dwyl.com/dheepakg/pdfMerge/Project1)
 
+[![Build Status](https://travis-ci.org/dheepakg/pdfmerge.svg?branch=master)](https://travis-ci.org/dheepakg/pdfmerge)
+
 # PDF Merger
 
 This is project is intended to merge PDFs cli. This is more of a practise area, with final output is expected to be an executable across Windows & non-Windows machine.
