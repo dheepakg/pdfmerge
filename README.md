@@ -10,8 +10,8 @@
 
 [![codecov](https://codecov.io/gh/dheepakg/pdfmerge/branch/master/graph/badge.svg)](https://codecov.io/gh/dheepakg/pdfmerge)
 
-| ![start with why](https://img.shields.io/badge/start%20with-why%3F-brightgreen.svg?style=flat)](https://dheepakg.github.io/side-project/2019/05/29/side-project-1.html) |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![codecov](https://codecov.io/gh/dheepakg/pdfmerge/branch/master/graph/badge.svg |
+| -------------------------------------------------------------------------------- |
 
 
 # PDF Merger
