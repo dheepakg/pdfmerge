@@ -10,8 +10,8 @@
 
 [![codecov](https://codecov.io/gh/dheepakg/pdfmerge/branch/master/graph/badge.svg)](https://codecov.io/gh/dheepakg/pdfmerge)
 
-| ![codecov](https://codecov.io/gh/dheepakg/pdfmerge/branch/master/graph/badge.svg |
-| -------------------------------------------------------------------------------- |
+| ![codecov](https://codecov.io/gh/dheepakg/pdfmerge/branch/master/graph/badge.svg) |
+| --------------------------------------------------------------------------------- |
 
 
 # PDF Merger
