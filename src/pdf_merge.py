@@ -6,7 +6,6 @@ output_file = "out.pdf"
 def file_merge(file_dict):
     merger = PdfFileMerger()
     for _, fileName in file_dict.items():
-        print(y)
         merger.append(PdfFileReader(fileName, "rb"))
     merger.write(output_file)
     return output_file
