@@ -5,8 +5,8 @@ from src.validate_files import *
 print("inside test pdf merge")
 
 test_files = {
-    "file1": "/Users/deegee/Desktop/WorkArea/GitHub/pdfmerge/data/File_One.pdf",
-    "file2": "/Users/deegee/Desktop/WorkArea/GitHub/pdfmerge/data/File_Two.pdf",
+    "file1": "./data/File_One.pdf",
+    "file2": "./data/File_Two.pdf",
 }
 
 

@@ -13,8 +13,8 @@ def file_merge(file_dict):
 
 if __name__ == "__main__":
     test_files = {
-        "file1": "/Users/deegee/Desktop/WorkArea/GitHub/pdfmerge/data/File_One.pdf",
-        "file2": "/Users/deegee/Desktop/WorkArea/GitHub/pdfmerge/data/File_Two.pdf",
+        "file1": "./data/File_One.pdf",
+        "file2": "./data/File_Two.pdf",
     }
 
     print(file_merge(test_files))
