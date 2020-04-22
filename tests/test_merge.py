@@ -1,51 +1,31 @@
+from src.merge import pdfMerge
+from src._version import __version__
+
+
 """Arrange  Act  Assert """
 
-import sys
-from operator import contains
-from optparse import Values
-from os.path import split
 from pathlib import Path
-
-
 import pytest
-
-from _version import __version__
-
-# import merge
-from merge import pdfMerge
-
-# from sys import stderr
-
-
-# from importlib_metadata import version
-
-# from pyparsing import __version__
-
-
-obj = pdfMerge()
 
 
 def check_version():
     obj3 = pdfMerge()
     with pytest.raises(SystemExit):
-        parser = obj3.read_files()
+        parser = obj3.read_args()
         args = parser.parse_args(["--version"])
 
 
 def test_version_check(capsys):
     result = check_version()
     out, err = capsys.readouterr()
-    # print("Output is ", out)
-    # print("Error is ", err)
     ver_list = out.split(" ")
-    # print(ver_list[-1])
     assert ver_list[-1] == __version__ + "\n"
 
 
 def test_read_2_variables():
     """To test 2 variables are passed or not"""
     obj2 = pdfMerge()
-    parser = obj2.read_files()
+    parser = obj2.read_args()
     two_files = vars(parser.parse_args(["file one", "file two"]))
     assert len(two_files) == 2
 
@@ -55,7 +35,7 @@ def read_1_variables():
     obj1 = pdfMerge()
 
     with pytest.raises(SystemExit):
-        parser = obj1.read_files()
+        parser = obj1.read_args()
         one_file = vars(parser.parse_args(["file one"]))
 
 
@@ -68,7 +48,7 @@ def test_read_1_variables(capsys):
 
 
 obj4 = pdfMerge()
-parser = obj4.read_files()
+parser = obj4.read_args()
 two_valid_pdf_files = vars(
     parser.parse_args(
         [
