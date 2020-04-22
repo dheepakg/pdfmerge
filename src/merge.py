@@ -38,7 +38,7 @@ class pdfMerge:
         return input_args
 
     def check_pdf_or_not(self, files_dict):
-        print("files ", files_dict.values())
+        # print("files ", files_dict.values())
         pdf_flag = True
         for element in files_dict.values():
             file_name = element.split("//")[-1]
@@ -49,7 +49,7 @@ class pdfMerge:
         return pdf_flag
 
     def file_exist_or_not(self, files_dict):
-        print("files ", files_dict)
+        # print("files ", files_dict)
         file_exist = True
         for element in files_dict.values():
             given_file = Path(element)
