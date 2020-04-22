@@ -1,7 +1,7 @@
 import _version as v
-from merge import pdfMerge
+from validate_files import fileValidation
 
-obj = pdfMerge()
+obj = fileValidation()
 parser = obj.read_args()
 file_dict = vars(parser.parse_args())
 
