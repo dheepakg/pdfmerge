@@ -9,7 +9,7 @@ except:
 from pathlib import Path
 
 
-class pdfMerge:
+class fileValidation:
     def read_args(self):
         """
         Reads files from CLI
@@ -61,6 +61,6 @@ class pdfMerge:
 
 
 if __name__ == "__main__":
-    obj = pdfMerge()
+    obj = fileValidation()
     parser = obj.read_args()
     file_dict = vars(parser.parse_args())

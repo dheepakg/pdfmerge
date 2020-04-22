@@ -1,4 +1,4 @@
-from src.merge import pdfMerge
+from src.validate_files import fileValidation
 from src._version import __version__
 
 
@@ -9,7 +9,7 @@ import pytest
 
 
 def check_version():
-    obj3 = pdfMerge()
+    obj3 = fileValidation()
     with pytest.raises(SystemExit):
         parser = obj3.read_args()
         args = parser.parse_args(["--version"])
@@ -24,7 +24,7 @@ def test_version_check(capsys):
 
 def test_read_2_variables():
     """To test 2 variables are passed or not"""
-    obj2 = pdfMerge()
+    obj2 = fileValidation()
     parser = obj2.read_args()
     two_files = vars(parser.parse_args(["file one", "file two"]))
     assert len(two_files) == 2
@@ -32,7 +32,7 @@ def test_read_2_variables():
 
 def read_1_variables():
     """To test 2 variables are passed or not"""
-    obj1 = pdfMerge()
+    obj1 = fileValidation()
 
     with pytest.raises(SystemExit):
         parser = obj1.read_args()
@@ -47,7 +47,7 @@ def test_read_1_variables(capsys):
         assert True
 
 
-obj4 = pdfMerge()
+obj4 = fileValidation()
 parser = obj4.read_args()
 two_valid_pdf_files = vars(
     parser.parse_args(
@@ -105,7 +105,3 @@ def test_pdf_file_exists_in_file_system():
 def test_pdf_file_not_exists_in_file_system():
     test_file, method_file = check_pdf_files_exists(two_invalid_pdf_files)
     assert test_file == method_file
-
-
-if __name__ == "__main__":
-    pass
