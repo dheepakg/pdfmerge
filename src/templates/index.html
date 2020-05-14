@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Merger</title>
+    <!-- Add some CSS to change client UI -->
+    <style>
+    body {
+        background-color: #232F3E;
+        }
+    h1 {
+        color: #FF9900;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 35px;
+        margin-left: 40px;
+        text-align: center;
+        }
+    label {
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 40px;
+        }
+    button, file, submit {
+        color:white;
+        background-color: grey;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 40px;
+        }
+     input {
+        color: #232F3E;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 20px;
+        }
+    </style>
+    <script>
+        // define the callAPI function that takes a first file name and second file name as parameters
+        var callAPI = (fileOne,fileTwo)=>{
+            // instantiate a headers object
+            var myHeaders = new Headers();
+            // add content type header to object
+            myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify({"File1":'../data/'+fileOne,"File2":'../data/'+fileTwo});
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch("/mergeFile", requestOptions)
+            .then(response => response.text())
+            .then(result => alert(result))
+            .catch(error => console.log('error', error));
+        }
+        function getFilePath(){
+            alert(document.getElementById("fileUpload").files[0])
+            // instantiate a headers object
+            var myHeaders = new Headers();
+            // add content type header to object
+            myHeaders.append("enctype", "multipart/form-data");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify({"File1":'../data/'+'',"File2":'../data/'+''});
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: document.getElementById("fileUpload").files[0],
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch("/mergeFileUpload", requestOptions)
+            .then(response => response.text())
+            .then(result => alert(result))
+            .catch(error => console.log('error', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Upload Multiple Files to Merge</h1>
+    
+    <form action="handle_form" method=post enctype=multipart/form-data>
+        <label>Select files :</label> 
+        <input type=file name=file multiple>
+        <input type=submit value=Upload>
+    </form>
+    <br>
+    <label>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</label>
+    <h1>Manual File Name Entry</h1>
+    <br>
+    <form>
+        <label>First File Name :</label>
+        <input type="text" id="fName">
+        <label>Second File Name :</label>
+        <input type="text" id="sName">
+        <!-- set button onClick method to call function we defined passing input values as parameters -->
+        <button type="button" 
+        onclick="callAPI(document.getElementById('fName').value,document.getElementById('sName').value)"
+        >Upload</button>
+    </form>
+
+</body>
+</html>
