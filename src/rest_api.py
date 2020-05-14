@@ -1,8 +1,7 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 from validate_files import fileValidation
 from pdf_merge import file_merge, file_merge_mutiple
-from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'html', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -34,15 +33,19 @@ def upload_file():
             if file.filename == '':
                 return 'No selected file'
             if allowed_file(file.filename):
+                #Creating Temp files for merging
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         print("File created")
+        #Calling merging logic with file list
         file_merge_mutiple(request)
         print("File Merged")
         filelist = [ f for f in os.listdir(app.config['UPLOAD_FOLDER'])]
         for f in filelist:
+            #Deleteing Temp files once merge is completed
             os.remove(os.path.join(app.config['UPLOAD_FOLDER'], f))
         return render_template("success.html")
 
+#Validate File Type
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
