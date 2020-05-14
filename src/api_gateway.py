@@ -7,6 +7,9 @@ app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'html', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = '../temp'
 
+#Below command to convert py to exe file
+#--> pyinstaller --onefile api_gateway.py
+
 # For Page start up with index.html
 @app.route('/')
 def startup():

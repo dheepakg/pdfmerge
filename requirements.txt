@@ -34,3 +34,8 @@ typing-extensions==3.7.4.1
 urllib3==1.25.9
 wcwidth==0.1.9
 zipp==2.2.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+Werkzeug==1.0.1
+flask==1.1.2
+itsdangerous==1.1.0
