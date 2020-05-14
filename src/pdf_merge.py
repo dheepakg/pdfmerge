@@ -1,6 +1,7 @@
+import io
 from PyPDF2 import PdfFileMerger, PdfFileReader
 
-output_file = "out.pdf"
+output_file = "../data/out.pdf"
 
 
 def file_merge(file_dict):
@@ -10,11 +11,17 @@ def file_merge(file_dict):
     merger.write(output_file)
     return output_file
 
+def file_merge_mutiple(request):
+    merger = PdfFileMerger()
+    for file in request.files.getlist('file'):
+        merger.append(PdfFileReader('../temp/'+file.filename, "rb"))
+    merger.write(output_file)
+    return output_file
 
 if __name__ == "__main__":
     test_files = {
-        "file1": "./data/File_One.pdf",
-        "file2": "./data/File_Two.pdf",
+        "file1": "../data/File_One.pdf",
+        "file2": "../data/File_Two.pdf",
     }
 
     print(file_merge(test_files))
